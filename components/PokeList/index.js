@@ -35,6 +35,8 @@ export default class PokeList extends PureComponent {
     render() {
         //Destruct pokeList and Loading from state.
         const { pokeList, loading } = this.state;
+        console.log(pokeList);
+
         //Destruct navigation from props 
         const { navigation } = this.props;
         //If laoding to false, return a FlatList which will have data, rednerItem, and keyExtractor props used.
@@ -43,10 +45,10 @@ export default class PokeList extends PureComponent {
         //keyExtractor used for giving a unique identifier for each item.
         if(!loading) {
             return <FlatList 
-                    data={pokeList}
-                    renderItem={(data) => <PokeCard {...data.item} navigation={navigation} />}
-                    keyExtractor={(item) => item.name} 
-                    />
+                data={pokeList}
+                renderItem={(data) => <PokeCard {...data.item} navigation={navigation} />}// ... is the Spread Syntax
+                keyExtractor={(item) => item.name}
+            />
         } else {
             return <ActivityIndicator />
         }
